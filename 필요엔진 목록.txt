@@ -1,0 +1,2 @@
+1. redis 3.0.6
+2. maxscale 2.4

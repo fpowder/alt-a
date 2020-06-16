@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Node Demo</title>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="socket.io.js"></script>
+    <script type="text/javascript">
+
+        // port to nginx proxy
+	    var socket = io('http://192.168.1.101:12000', { transports: ['websocket', 'polling'] });
+
+        socket.on('connect', () => {
+            console.log('socket io websocket connected');
+            socket.emit('reqCdc');
+
+        });
+
+        socket.on('cdc', (data) => {
+            console.log('cdc data');
+            console.log(data);
+            //socket.emit('my other event', {my: 'data'});
+            JSON.parse(data.data);
+            $('#cdcData').append('<b>' + JSON.stringify(data.data) + '</b><br>' + '<b>' + JSON.stringify(data.pid) + '</b><br>');
+
+        });
+
+        /*
+        socket.on('cdcStream', (data) => {
+            console.log('cdcStream event');
+            console.log(data);
+        });
+        */
+
+        //다른 이벤트 테스트
+        socket.on('eventTest', (data) => {
+            console.log('test event data');
+            console.log(data);
+        });
+
+        socket.on('roomEvent', (data) => {
+            console.log('roomEvent message on cluster environment.');
+            console.log(data);
+        });	
+
+        $(function(){
+
+            $('#roomEvent').on('click', function(){
+                console.log('button clicked');
+                socket.emit('broadcast', 'roomEvent message');
+            });
+
+        });
+
+    </script>
+
+</head>
+
+
+
+<body>
+
+    <input type="button" id="roomEvent" value="roomEvent" />	
+
+    <p>Maxscale data streaming service</p>
+
+    <!-- <input type="button" id="maxscale" value="maxscale" /> -->
+
+    <b id="cdcData"></b>
+
+</body>
+
+</html>
