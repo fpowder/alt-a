@@ -21,12 +21,12 @@ maxscale을 활용하게 되었다.
 # Link
 **자세한 내용은 아래 링크 참조**
 
-1.포트폴리오\
+**1.포트폴리오**\
 https://drive.google.com/file/d/1lcQa78d1soboSYyLZJhMVCfspCazgWLl/view
 
-2.VM 다운로드 및 설명서\
+**2.VM 다운로드 및 설명서**\
 https://drive.google.com/drive/folders/1BIebqwmG0OXVRF7hMo8pJtnkmvqDUlSE
 
-3.구동영상 샘플\
+**3.구동영상 샘플**\
 https://www.youtube.com/watch?v=AfJ6sD6TfFI&feature=youtu.be
 
